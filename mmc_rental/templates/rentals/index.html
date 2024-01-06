@@ -1,0 +1,23 @@
+{% extends 'rentals/base.html' %}
+
+{% block content %}
+    <h2>Welcome,{{ user.username }}</h2>
+    <p>Rent bf and gf at this website</p>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Explore Our Boyfriends and Girlfriends</h2>
+        <div class="row">
+            {% for boyfriend in boyfriends %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <img src="{{ boyfriend.profile_pic.url }}" class="card-img-top profile-pic" alt="Profile Picture">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ boyfriend.name }}</h5>
+                            <p class="card-text">{{ boyfriend.bio }}</p>
+                            <a href="{% url 'rental_detail' rental_id=boyfriend.id %}" class="btn-love">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
